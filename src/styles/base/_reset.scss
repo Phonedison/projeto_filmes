@@ -1,0 +1,54 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  background: $black;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Karla";
+}
+
+main {
+  padding: 0.8rem;
+  height: 100%;
+  @include display-flex(
+    $direction: row,
+    $gap: 0.8rem,
+    $align: center,
+    $justify: space-between
+  );
+}
+
+img,
+iframe,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Poppins";
+}

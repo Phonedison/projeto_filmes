@@ -1,0 +1,103 @@
+@use "../abstracts/extends" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.header {
+  width: 100%;
+  padding: 0.8rem 3.2rem;
+
+  // Ajuste de posição: static não aceita 'top'.
+  // Use 'sticky' para o header acompanhar a rolagem ou 'relative'.
+  position: sticky;
+  top: 0;
+  z-index: 10; // Recomendado para headers
+
+  &__container {
+    height: 100%;
+    @include display-flex($direction: row, $align: center, $gap: 2.4rem);
+  }
+
+  &__research {
+    width: 100%;
+    max-width: 48rem;
+    // Removido height 100% se o pai for flex, o alinhamento já resolve
+    @include display-flex(
+      $direction: row,
+      $align: center,
+      $gap: 3.2rem,
+      $justify: space-around
+    );
+
+    &-select {
+      padding: 0.8rem;
+      @extend .border-radius;
+      @extend .glass;
+      display: flex; // Para garantir que o align-items funcione
+      align-items: center;
+    }
+
+    &-form {
+      @include display-flex($direction: row, $align: center, $gap: 0);
+      @extend .border-radius;
+      @extend .glass;
+      padding: 0.8rem;
+      width: 100%;
+
+      input {
+        // Removido o '&' desnecessário
+        flex: 1; // Faz o input ocupar o espaço disponível
+        height: 3.2rem;
+        border: none;
+        background: transparent;
+      }
+    }
+  }
+
+  &__user {
+    padding: 0.8rem;
+    @extend .glass;
+    @extend .border-radius;
+    @include display-flex(
+      $direction: row,
+      $align: center,
+      $justify: space-around,
+      $gap: 1.6rem // Adicionado um gap para respiro
+    );
+
+    &-img {
+      height: 4.8rem;
+      width: 4.8rem;
+      object-fit: cover; // Garante que a imagem não distorça
+    }
+
+    &-notification {
+      @include display-flex($direction: row, $align: center);
+      cursor: pointer;
+    }
+
+    &-container {
+      @include display-flex(
+        $direction: row,
+        $justify: center,
+        $align: center,
+        $gap: 0.4rem
+      );
+    }
+
+    &-info {
+      @include display-flex(
+        $direction: column,
+        $justify: center,
+        $align: flex-end,
+        $gap: 0.1rem
+      );
+
+      p {
+        text-align: end;
+        font-size: 1.33rem;
+        line-height: 1.2; // 1 pode cortar letras como 'g' ou 'j'
+        margin: 0;
+      }
+    }
+  }
+}
