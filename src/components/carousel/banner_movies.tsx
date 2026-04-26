@@ -25,22 +25,6 @@ export const Banner = () => {
       <section className="banner__container">
         <div className="banner__carousel">
           {/* Indicadores */}
-          <div className="banner__carousel-pointer">
-            {movies.map((_, index) => (
-              <div
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                style={{ cursor: "pointer" }}
-              >
-                {activeIndex === index ? (
-                  <RiCheckboxBlankCircleFill />
-                ) : (
-                  <RiCheckboxBlankCircleLine />
-                )}
-              </div>
-            ))}
-          </div>
-
           <div
             className="banner__carousel-imgs"
             style={{ perspective: "1000px" }}
@@ -49,7 +33,7 @@ export const Banner = () => {
               // Lógica do cálculo do efeito
               const offset = index - activeIndex;
               const isCenter = index === activeIndex;
-              const xPercent = offset * 55;
+              const xPercent = offset * 65;
 
               return (
                 <motion.div
@@ -58,7 +42,7 @@ export const Banner = () => {
                   initial={false}
                   animate={{
                     x: `${xPercent}%`, // Espaçamento horizontal entre itens
-                    scale: isCenter ? 1 : 0.8,
+                    scale: isCenter ? 1.2 : 0.8,
                     rotateY: isCenter ? 0 : offset > 0 ? -45 : 45,
                     zIndex: isCenter ? 10 : Math.max(1, 5 - Math.abs(offset)),
                     opacity: Math.abs(offset) > 1 ? 0 : 1, // Esconde itens muito distantes
@@ -67,7 +51,6 @@ export const Banner = () => {
                   onClick={() => setActiveIndex(index)}
                   style={{
                     position: "absolute",
-                    // position: isCenter ? "relative" : "absolute",
                     cursor: "pointer",
                     transformStyle: "preserve-3d",
                   }}
@@ -109,10 +92,35 @@ export const Banner = () => {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                  <img src={m.image} alt={m.title} className="carousel-img" />
+                  <motion.img
+                    src={m.image}
+                    alt={m.title}
+                    className="carousel-img"
+                    animate={{
+                      filter: isCenter
+                        ? "blur(0) grayscale(0) brightness(1)"
+                        : "blur(4px) grayscale(.74) brightness(.4)",
+                    }}
+                  />
                 </motion.div>
               );
             })}
+          </div>
+
+          <div className="banner__carousel-pointer">
+            {movies.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                style={{ cursor: "pointer" }}
+              >
+                {activeIndex === index ? (
+                  <RiCheckboxBlankCircleFill />
+                ) : (
+                  <RiCheckboxBlankCircleLine />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

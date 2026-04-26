@@ -72,12 +72,13 @@
     }
 
     &-pointer {
+      z-index: 40;
       width: 100%;
       padding: 0 1.6rem;
       @include display-flex(
         $direction: row,
         $align: center,
-        $justify: flex-end,
+        $justify: center,
         $gap: 0.4rem
       );
 
@@ -176,4 +177,5 @@
   left: 0;
   z-index: 1;
   object-fit: cover;
+  box-shadow: "0 0 4px 16px rgba(0,0,0,1)";
 }
