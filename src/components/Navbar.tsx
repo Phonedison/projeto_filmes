@@ -5,13 +5,17 @@ import { MdContactSupport } from "react-icons/md";
 import { RiMovieFill } from "react-icons/ri";
 import { TbSettingsFilled } from "react-icons/tb";
 
-import img from "../img/images.jpeg";
+import img from "/img/images.jpeg";
 import { FaCirclePlay } from "react-icons/fa6";
 
 export function Navbar() {
   return (
     <>
       <div className="navbar__container">
+        {/* Logotipo */}
+        <div className="header__logotipo">
+          <h2>UX MOVIE</h2>
+        </div>
         <ul className="navbar__list">
           <li className="navbar__list-item">
             <GoHomeFill />

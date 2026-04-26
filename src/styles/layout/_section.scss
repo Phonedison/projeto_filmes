@@ -1,0 +1,179 @@
+@use "../abstracts/extends" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/variables" as *;
+
+.sections {
+  width: 100%;
+  height: 100%;
+}
+
+.banner {
+  &__container {
+    padding: 1.6rem;
+    width: 100%;
+
+    position: relative;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.6rem;
+    color: $white;
+
+    background:
+      linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        transparent 75%
+      ),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+
+    @include display-flex(
+      $direction: column,
+      $justify: space-between,
+      $align: flex-start,
+      $gap: 0.8rem
+    );
+
+    &-info {
+      width: 100%;
+      @include display-flex(
+        $direction: row,
+        $justify: space-between,
+        $align: center,
+
+        $gap: 0.8rem
+      );
+    }
+
+    &-type {
+      width: 100%;
+    }
+  }
+
+  &__carousel {
+    width: 100%;
+    @include display-flex($direction: column, $align: center, $gap: 1.2rem);
+
+    &-imgs {
+      position: relative;
+      width: 100%;
+      height: 50rem;
+      perspective: 120rem;
+      transform-style: preserve-3d;
+
+      @include display-flex($direction: row, $justify: center, $align: center);
+    }
+
+    &-pointer {
+      width: 100%;
+      padding: 0 1.6rem;
+      @include display-flex(
+        $direction: row,
+        $align: center,
+        $justify: flex-end,
+        $gap: 0.4rem
+      );
+
+      svg {
+        width: 0.8rem;
+        height: 0.8rem;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+
+    &-img {
+      position: absolute;
+      width: 50%;
+      aspect-ratio: 16 / 9;
+      border-radius: 1.2rem;
+      overflow: hidden;
+
+      box-shadow: 0 2.4rem 6rem rgba(0, 0, 0, 0.5);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        display: block;
+      }
+    }
+  }
+}
+
+.info {
+  @include display-flex(
+    $direction: row,
+    $align: center,
+    $justify: flex-start,
+    $gap: 0.8rem
+  );
+
+  &__item {
+    @extend .glass;
+    padding: 0.3rem 0.9rem;
+    border-radius: 1.6rem;
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+  &__title {
+    text-wrap: balance;
+  }
+
+  &__play {
+    width: 3.2rem;
+    height: 3.2rem;
+    min-width: 3.2rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    @extend .glass;
+    @include display-flex($justify: center, $align: center);
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__heart {
+    width: 4rem;
+    height: 4rem;
+    min-width: 4rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    @extend .glass;
+    @include display-flex($justify: center, $align: center);
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  object-fit: cover;
+}

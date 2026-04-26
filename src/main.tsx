@@ -7,15 +7,15 @@ import { App } from "./App";
 
 import "./styles/main.scss";
 
-createRoot(document.getElementById("header")!).render(
-  <StrictMode>
-    <Header />
-  </StrictMode>,
-);
-
 createRoot(document.getElementById("navbar")!).render(
   <StrictMode>
     <Navbar />
+  </StrictMode>,
+);
+
+createRoot(document.getElementById("header")!).render(
+  <StrictMode>
+    <Header />
   </StrictMode>,
 );
 

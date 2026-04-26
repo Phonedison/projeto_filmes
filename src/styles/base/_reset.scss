@@ -1,7 +1,9 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,27 +13,47 @@
 html {
   font-size: 62.5%;
   height: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-size: 1.6rem;
   line-height: 1.6;
   background: $black;
-  color: white;
-  height: 100vh;
+  color: $white;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  font-family: "Karla";
+  flex-direction: row;
+  font-family: "Karla", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Esconder a barra de rolagem no Chrome, Safari e Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Esconder a barra de rolagem no IE, Edge e Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+section {
+  width: 100%;
+  height: auto;
 }
 
 main {
-  padding: 0.8rem;
-  height: 100%;
+  padding: 0 0.8rem;
+  width: 100%;
   @include display-flex(
-    $direction: row,
+    $direction: column,
     $gap: 0.8rem,
-    $align: center,
-    $justify: space-between
+    $align: flex-start,
+    $justify: flex-start
   );
 }
 
@@ -44,11 +66,43 @@ svg {
   height: auto;
 }
 
+svg {
+  background-color: none;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Poppins";
+  font-family: "Montserrat", "Poppins", sans-serif;
+  line-height: 1.2;
+  font-weight: 700;
 }

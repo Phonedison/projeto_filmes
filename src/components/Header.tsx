@@ -1,14 +1,13 @@
 import { FaSearch } from "react-icons/fa";
 
-import img_user from "../img/afro-man-profile.png";
+import img_user from "/img/afro-man-profile.png";
 import { IoIosArrowDown, IoMdNotificationsOutline } from "react-icons/io";
+import { MdFilterList } from "react-icons/md";
 
 export function Header() {
   return (
     <>
       <div className="header__container">
-        {/* Logotipo */}
-        <div className="header__logotipo">UX MOVIE</div>
         {/* Pèsquisa */}
         <div className="header__research">
           <div className="header__research-select">
@@ -25,7 +24,10 @@ export function Header() {
             <button>
               <FaSearch />
             </button>
-            <input type="text" name="" id="" />
+            <input type="text" />
+            <a href="#">
+              <MdFilterList />
+            </a>
           </form>
         </div>
         {/* User Notification */}
