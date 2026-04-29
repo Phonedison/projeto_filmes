@@ -1,0 +1,113 @@
+@use "../abstracts/extends" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.list-movies {
+  width: 100%;
+  height: auto;
+
+  &__container {
+    @include display-flex($align: flex-start);
+    padding: 1.6rem;
+  }
+
+  &__itens {
+    @include display-flex($direction: row, $gap: 1.6rem, $align: flex-start);
+  }
+
+  &__item {
+    width: 25rem;
+    height: 100%;
+    max-height: 60rem;
+
+    border-radius: 2.4rem;
+    box-shadow:
+      rgba(0, 0, 0, 0.15) 0px 15px 25px,
+      rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  }
+}
+
+.movie {
+  @extend .background_movie_list;
+  border-radius: 1.6rem;
+  padding: 1.6rem;
+  @include display-flex($gap: 0);
+  width: 100%;
+  cursor: pointer;
+
+  & p {
+    font-size: 1.33rem;
+    line-height: 1;
+  }
+
+  &__title {
+    font-family: "Montserrat";
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  &__record {
+    @include display-flex(
+      $direction: row,
+      $gap: 0.4rem,
+      $justify: space-between,
+      $align: center
+    );
+
+    color: $orange;
+
+    & p {
+      font-size: 1.33rem;
+      font-weight: 400;
+    }
+
+    & svg {
+      width: 1.3rem;
+    }
+  }
+
+  &__info {
+    padding-top: 1.6rem;
+    width: 100%;
+
+    @include display-flex(
+      $direction: column,
+      $gap: 0.8rem,
+      $justify: space-between,
+      $align: flex-start
+    );
+  }
+
+  &__description {
+    width: 100%;
+    @include display-flex(
+      $direction: row,
+      $gap: 0.8rem,
+      $justify: space-between,
+      $align: center
+    );
+  }
+
+  &__img {
+    width: 100%;
+    height: 28rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    @include display-flex($align: center, $justify: center);
+    box-shadow:
+      rgba(0, 0, 0, 0.1) -4px 9px 25px -6px,
+      rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__year {
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.65;
+  }
+}

@@ -179,3 +179,62 @@
   object-fit: cover;
   box-shadow: "0 0 4px 16px rgba(0,0,0,1)";
 }
+
+.trends {
+  width: 100%;
+  height: auto;
+  padding: 1.6rem;
+
+  &__container {
+    padding: 0.8rem;
+    @include display-flex(
+      $direction: row,
+      $gap: 0.8rem,
+      $justify: space-between
+    );
+  }
+
+  &__types-movies {
+    width: 100%;
+
+    @include display-flex($direction: row, $gap: 0.8rem, $justify: flex-start);
+
+    .types-movies {
+      font-size: 1.33rem;
+      padding: 0.8rem;
+      border-radius: 2.4rem;
+      cursor: pointer;
+      @extend .card;
+    }
+  }
+
+  &__navegation {
+    max-width: 10rem;
+    width: 100%;
+
+    @include display-flex(
+      $direction: row,
+      $gap: 1.6rem,
+      $justify: space-evenly
+    );
+
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    border-radius: 2.4rem;
+
+    @extend .card;
+  }
+}
+
+.types-movies {
+  font-weight: 600;
+  @extend .card;
+
+  text-transform: capitalize;
+
+  &.active {
+    color: $black;
+    font-weight: 900;
+    background-color: #f7f5f2;
+  }
+}
